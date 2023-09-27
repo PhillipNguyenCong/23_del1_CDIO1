@@ -13,8 +13,8 @@ class Game{
         return scanner.nextLine().equals("roll");
     }
     
-    public boolean checkWin(int score1, int score2){
-        return score1 > 39 || score2 > 39;
+    public boolean checkWin(int score1, int score2, int roll1, int roll2){
+        return score1 > 39 && roll1 == roll2 && roll1 != 1 && roll2 != 1|| score2 > 39 && roll1 == roll2 && roll1 != 1 && roll2 != 1;
     }
 
 
