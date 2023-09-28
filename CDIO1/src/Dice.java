@@ -1,13 +1,15 @@
 import java.util.Random;
 class Dice{
-
-    public int faceValue;
+    private int faceValue;
     
     //initialize random number generator
 	Random random = new Random();
 
-    public int getValue(){
+    public void rollDie() {
         faceValue = random.nextInt(6) + 1;
-            return faceValue;
-        }
+    }
+
+    public int getValue() {
+        return faceValue;
+    }
 }
