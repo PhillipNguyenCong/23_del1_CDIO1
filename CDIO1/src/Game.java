@@ -2,12 +2,6 @@ class Game{
 
 
 
-    public String startGame(){
-        // to be continued...
-        return "NULL";
-    }
-
-
     public boolean checkRoll(){
         var scanner = new java.util.Scanner(System.in);
         return scanner.nextLine().equals("roll");
@@ -29,8 +23,9 @@ class Game{
         return roll1 == roll2 && roll1 != 1 && playerscore < 40 && roll1 != 6;
     }
 
-    public String play(){
-        // to be continued...
-        return "NULL";
-    } 
+    public boolean checkForty (int score){
+        return score > 39;
+    }
+
+
 }
