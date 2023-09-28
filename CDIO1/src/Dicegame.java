@@ -9,7 +9,7 @@ class Dicegame{
 
         var scanner = new java.util.Scanner(System.in);
         System.out.println("Please enter the name of Player 1");
-        //System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
+        
         var player1 = new Player(scanner.nextLine());
 
         System.out.println("Please enter the name of Player 2");
@@ -17,10 +17,8 @@ class Dicegame{
 
         
         player1.isTurn = true;      //Player1 starts
-        //System.out.println(player1.name + "'s turn. Write 'roll' to throw the dice");
 
-        
-            
+    
             while(!game.checkWin(player1.score, player2.score, roll1, roll2)){
                 roll1 = dice.getValue();
                 roll2 = dice.getValue();
@@ -31,7 +29,7 @@ class Dicegame{
                     System.out.println("\n" + player1.name + "'s turn. Write 'roll' to throw the dice");
                     if(game.checkRoll()){
                         System.out.println("Dice 1: " + roll1 + "\nDice 2: " + roll2);
-                        if(roll1 == 1 && roll2 == 1){
+                        if(game.checkTwo1s(roll1, roll2)){
                             player1.score = 0;
                             System.out.println("You hit TWO 1'ns");
                             System.out.println("You lose all your point =(");
@@ -40,7 +38,7 @@ class Dicegame{
                             player1.isTurn = true;
                             player2.isTurn = false;
                         }
-                        else if (roll1 == roll2 && roll1 != 1){
+                        else if (game.checkEkstraturn(roll1, roll2, player1.score)){
                             player2.score += sum;
                             System.out.println("Score: " + sum + "\nTotal score: " + player2.score + "\n");
                             player1.isTurn = true;
@@ -64,7 +62,7 @@ class Dicegame{
                     System.out.println("\n" +player2.name + "'s turn. Write 'roll' to throw the dice");
                     if(game.checkRoll()){
                         System.out.println("Dice 1: " + roll1 + "\nDice 2: " + roll2);
-                        if(roll1 == 1 && roll2 == 1){
+                        if(game.checkTwo1s(roll1, roll2)){
                             player2.score = 0;
                             System.out.println("You hit TWO 1'ns");
                             System.out.println("You lose all your point =(");
@@ -73,7 +71,7 @@ class Dicegame{
                             player1.isTurn = false;
                             player2.isTurn = true;
                         }
-                        else if (roll1 == roll2 && roll1 != 1){
+                        else if (game.checkEkstraturn(roll1, roll2, player2.score)){
                             player2.score += sum;
                             System.out.println("Score: " + sum + "\nTotal score: " + player2.score + "\n");
                             player1.isTurn = false;
