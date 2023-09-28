@@ -30,10 +30,12 @@ class Dicegame{
                 roll2 = dice.getValue();
                 sum += roll1 + roll2;
 
+                                
             
                 if(player1.isTurn){
+                    
                     System.out.println("\n" + player1.name + "'s turn. Write 'roll' to throw the dice");
-                    if(game.checkRoll()){
+                    if(game.checkRoll()){                        
                         System.out.println("Dice 1: " + roll1 + "\nDice 2: " + roll2);
                         if(game.checkTwo1s(roll1, roll2)){
                             player1.score = 0;
@@ -47,7 +49,10 @@ class Dicegame{
                         }
                         else if (game.checkEkstraturn(roll1, roll2, player1.score)){
                             player1.score += sum;
-                            System.out.println("Score: " + sum + "\nTotal score: " + player2.score + "\n");
+                            if (player1.score > 40){
+                                player1.score = 40;
+                            }
+                            System.out.println("Score: " + sum + "\nTotal score: " + player1.score + "\n");
                             player1.isTurn = true;
                             player2.isTurn = false;
                             System.out.println("You hit 2 alike \nYou got an extra turn");
@@ -55,11 +60,14 @@ class Dicegame{
                         }
                         else if (game.checkTwoSixes(roll1, roll2)){
                             player1.score += sum;
-                            System.out.println("Score: " + sum + "\nTotal score: " + player2.score + "\n");
+                            if (player1.score > 40){
+                                player1.score = 40;
+                            }
+                            System.out.println("Score: " + sum + "\nTotal score: " + player1.score + "\n");
                             player1.isTurn = true;
                             player2.isTurn = false;
                             isLastRoll2Sixes++;
-                            if(isLastRoll2Sixes == 1 && player2.score < 40){
+                            if(isLastRoll2Sixes == 1 && player1.score < 40){
                                 System.out.println("You hit 2 Sixes \nYou got an extra turn. \nIf you hit 2 sixes again you win!");
                             }
                             else if(isLastRoll2Sixes == 2){
@@ -70,6 +78,9 @@ class Dicegame{
                         }
                         else{
                             player1.score += sum;
+                            if (player1.score > 40){
+                                player1.score = 40;
+                            }
                             System.out.println("Score: " + sum + "\nTotal score: " + player1.score + "\n");
                             player1.isTurn = false;
                             player2.isTurn = true;
@@ -80,9 +91,12 @@ class Dicegame{
                     else{
                         System.out.println("Error. Try again");
                     }
-                    
+                    if (game.checkForty(player1.score)){
+                    System.out.println("You hit the 40 marker you need to hit two a like to win");
+                }
                 }
                 else if(player2.isTurn){
+                    
                     System.out.println("\n" +player2.name + "'s turn. Write 'roll' to throw the dice");
                     if(game.checkRoll()){
                         System.out.println("Dice 1: " + roll1 + "\nDice 2: " + roll2);
@@ -96,8 +110,13 @@ class Dicegame{
                             player2.isTurn = true;
                             isLastRoll2Sixes = 0;
                         }
+                       
+                            
                         else if (game.checkEkstraturn(roll1, roll2, player2.score)){
                             player2.score += sum;
+                            if (player2.score > 40){
+                                player2.score = 40;
+                            }
                             System.out.println("Score: " + sum + "\nTotal score: " + player2.score + "\n");
                             player1.isTurn = false;
                             player2.isTurn = true;
@@ -105,8 +124,13 @@ class Dicegame{
                             isLastRoll2Sixes = 0;
 
                         }
+                        
+                            
                         else if (game.checkTwoSixes(roll1, roll2)){
                             player2.score += sum;
+                            if (player2.score > 40){
+                                player2.score = 40;
+                            }
                             System.out.println("Score: " + sum + "\nTotal score: " + player2.score + "\n");
                             player1.isTurn = false;
                             player2.isTurn = true;
@@ -117,11 +141,15 @@ class Dicegame{
                             else if(isLastRoll2Sixes == 2){
                                 System.out.println("You got 2 sixes again!!");
                             }
-
+                            
                         
                         }
+                        
                         else{
                         player2.score += sum;
+                        if (player2.score > 40){
+                                player2.score = 40;
+                            }
                         System.out.println("Score: " + sum + "\nTotal score: " + player2.score + "\n");
                         player1.isTurn = true;
                         player2.isTurn = false;
@@ -131,7 +159,9 @@ class Dicegame{
                     else{
                         System.out.println("Error. Try again");
                     }
-                    
+                    if (game.checkForty(player2.score)){
+                    System.out.println("You hit the 40 marker you need to hit two a like to win");
+                }
                 }
                 sum = 0;
             }
@@ -149,5 +179,6 @@ class Dicegame{
 
    
 }
+
 
  
