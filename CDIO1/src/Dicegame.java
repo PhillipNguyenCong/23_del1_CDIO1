@@ -1,11 +1,17 @@
 class Dicegame{
     public static void main(String[] args) {
         
+        
+
         var game = new Game();
         var dice = new Dice();
         int sum = 0;
         int roll1 = 0;
         int roll2 = 0;
+
+        var test = new Test();
+        //System.out.println(test.testThrow(1000));
+        //System.out.println(test.alike(1000));
 
         var scanner = new java.util.Scanner(System.in);
         System.out.println("Please enter the name of Player 1");
