@@ -1,5 +1,5 @@
 import java.util.Random;
-class Dice{
+class Dice {
     private int faceValue;
     
     //initialize random number generator
