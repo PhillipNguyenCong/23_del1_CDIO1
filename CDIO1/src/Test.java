@@ -1,13 +1,11 @@
 class Test{
+    private int one = 0;
+    private int two = 0;
+    private int three = 0;
+    private int four = 0;
+    private int five = 0;
+    private int six = 0;
 
-    public int one = 0;
-    public int two = 0;
-    public int three = 0;
-    public int four = 0;
-    public int five = 0;
-    public int six = 0;
-
-    
     public String testThrow(int testCases){
         var dicevalue = new Dice();
         for(int i = 0; i < testCases; i++){
@@ -51,7 +49,5 @@ class Test{
         double percentAlike = alike * 100 / testCases;
         double percentNotalike = notalike * 100 / testCases;
         return "Two identical dice: " + alike + " Percentage: " + percentAlike + "%" + "\nNot identical dice: " + notalike + " Percentage: " + percentNotalike + "%";
-    } 
-
+    }
 }
-
